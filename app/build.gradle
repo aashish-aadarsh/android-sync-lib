@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply from: 'versions.gradle'
+
+
+android {
+    compileSdkVersion build_compileSdkVersion
+    lintOptions.abortOnError build_abortOnError_enable
+
+    defaultConfig {
+        minSdkVersion build_minSdkVersion
+        targetSdkVersion build_targetSdkVersion
+        versionCode build_versionCode
+        versionName build_versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:' + kotlin_version
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:' + kotlin_version
+
+    //for Android
+    implementation 'androidx.appcompat:appcompat:' + app_appcompatx
+
+    //for Android Architecture
+    implementation 'androidx.room:room-runtime:' + room_version
+    kapt 'androidx.room:room-compiler:' + room_version
+
+    implementation 'androidx.work:work-runtime-ktx:' + work_version
+
+    //ThirdPartyLib
+    implementation 'com.google.code.gson:gson:' + gson_version
+    implementation 'com.squareup.okhttp3:okhttp:' + okhttp_version
+    implementation 'com.squareup.okhttp3:logging-interceptor:' + retrofitinterceptor
+
+}
+

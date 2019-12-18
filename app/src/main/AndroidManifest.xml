@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.devop.aashish.android.synclib">
+
+    <application
+            android:name="com.devop.aashish.android.core.ApplicationClass"
+            android:allowBackup="true"
+            android:fullBackupContent="false"
+            android:supportsRtl="true"
+            tools:ignore="GoogleAppIndexingWarning"/>
+</manifest>

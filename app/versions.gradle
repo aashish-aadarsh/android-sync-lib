@@ -1,0 +1,25 @@
+/* Application Default Config*/
+
+ext {
+    build_compileSdkVersion = 28
+    build_minSdkVersion = 19
+    build_targetSdkVersion = 28
+    build_versionCode = 1
+    build_versionName = "1.0.0"
+    build_abortOnError_enable = false
+}
+
+/* ApplicationDependency*/
+
+ext {
+    kotlin_version = '1.3.30'
+
+    app_appcompatx = '1.0.2'
+    room_version = '2.2.2'
+    work_version = '2.2.0'
+
+    okhttp_version = "3.10.0"
+    gson_version = "2.8.5"
+    retrofitinterceptor = '3.9.0'
+
+}
