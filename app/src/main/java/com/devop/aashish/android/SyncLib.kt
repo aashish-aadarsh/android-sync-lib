@@ -20,6 +20,7 @@
 package com.devop.aashish.android
 
 import android.content.Context
+import com.devop.aashish.android.core.AppHolder
 import com.devop.aashish.android.core.RequestExecution
 import com.devop.aashish.android.utility.contract.ExecutionCallBack
 import com.devop.aashish.android.vo.Request
@@ -31,6 +32,7 @@ class SyncLib(context: Context) {
 
     init {
         WorkUtil.initGarbageCollector(context)
+        AppHolder.setAppContext(mContext)
     }
 
     /**

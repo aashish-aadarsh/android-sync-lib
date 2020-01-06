@@ -24,5 +24,4 @@ import com.devop.aashish.android.datasource.database.entity.ResponseEntity
 
 interface ExecutionCallBack {
     fun operationCompleted(requestEntity: RequestEntity, responseEntity: ResponseEntity?)
-    fun operationError(requestEntity: RequestEntity, exception: Exception)
 }

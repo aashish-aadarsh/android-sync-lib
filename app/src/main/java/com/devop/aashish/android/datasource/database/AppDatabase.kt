@@ -22,7 +22,7 @@ package com.devop.aashish.android.datasource.database
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.devop.aashish.android.core.ApplicationClass
+import com.devop.aashish.android.core.AppHolder
 import com.devop.aashish.android.datasource.database.dao.RequestCascadeDao
 import com.devop.aashish.android.datasource.database.dao.RequestDao
 import com.devop.aashish.android.datasource.database.dao.ResponseDao
@@ -30,11 +30,13 @@ import com.devop.aashish.android.datasource.database.entity.RequestCascadeEntity
 import com.devop.aashish.android.datasource.database.entity.RequestEntity
 import com.devop.aashish.android.datasource.database.entity.ResponseEntity
 
-@Database(entities = [
-    RequestEntity::class,
-    ResponseEntity::class,
-    RequestCascadeEntity::class],
-        version = 1, exportSchema = false)
+@Database(
+    entities = [
+        RequestEntity::class,
+        ResponseEntity::class,
+        RequestCascadeEntity::class],
+    version = 1, exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -43,10 +45,12 @@ abstract class AppDatabase : RoomDatabase() {
 
         private fun provideDatabase(): AppDatabase {
             if (mAppDatabase == null) {
-                mAppDatabase = Room.databaseBuilder(ApplicationClass.appContext,
-                        AppDatabase::class.java, DB_NAME)
-                        .fallbackToDestructiveMigration()
-                        .build()
+                mAppDatabase = Room.databaseBuilder(
+                    AppHolder.getAppContext()!!,
+                    AppDatabase::class.java, DB_NAME
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
             }
             return mAppDatabase as AppDatabase
         }
